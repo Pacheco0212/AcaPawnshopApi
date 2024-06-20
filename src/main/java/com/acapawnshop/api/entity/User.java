@@ -31,6 +31,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
     private List<Bank> banks = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", orphanRemoval = true)
+    private List<Credentials> credentials = new ArrayList<>();
+
     public User(UserDTO userDTO) {
         this.names = userDTO.names();
         this.paternalSurname = userDTO.paternalSurname();
@@ -47,6 +50,11 @@ public class User {
     public void addFinance(Bank bank) {
         bank.setUser(this);
         this.banks.add(bank);
+    }
+
+    public void addCredentials(Credentials credentials) {
+        credentials.setUser(this);
+        this.credentials.add(credentials);
     }
 
 }
