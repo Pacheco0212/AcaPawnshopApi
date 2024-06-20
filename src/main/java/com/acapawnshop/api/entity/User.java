@@ -1,6 +1,6 @@
 package com.acapawnshop.api.entity;
 
-import com.acapawnshop.api.dto.UserDTO;
+import com.acapawnshop.api.dto.user.UserDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
