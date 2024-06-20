@@ -1,7 +1,7 @@
 package com.acapawnshop.api.service;
 
-import com.acapawnshop.api.dto.CredentialsCreateDTO;
-import com.acapawnshop.api.dto.UserCreateDTO;
+import com.acapawnshop.api.dto.user.CredentialsCreateDTO;
+import com.acapawnshop.api.dto.user.UserCreateDTO;
 import com.acapawnshop.api.entity.Address;
 import com.acapawnshop.api.entity.Bank;
 import com.acapawnshop.api.entity.Credentials;
