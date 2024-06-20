@@ -1,0 +1,7 @@
+CREATE TABLE user_finance (
+    financeId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_Id BIGINT NOT NULL,
+    RFC VARCHAR(13) UNIQUE,
+    bank_account VARCHAR(20),
+    FOREIGN KEY (user_Id) REFERENCES users(user_id) ON DELETE CASCADE
+);
