@@ -29,7 +29,7 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/usr/register", "/usr/signIn").permitAll()
+                        .requestMatchers("/usr/register", "/usr/signIn", "/usr/logIn").permitAll()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
