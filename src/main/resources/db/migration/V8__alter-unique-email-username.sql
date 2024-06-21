@@ -1,0 +1,6 @@
+ALTER TABLE users
+    ADD CONSTRAINT UK_EMAIL UNIQUE (email);
+
+ALTER TABLE user_credentials
+    ADD CONSTRAINT UK_USERNAME UNIQUE (user_name);
+
