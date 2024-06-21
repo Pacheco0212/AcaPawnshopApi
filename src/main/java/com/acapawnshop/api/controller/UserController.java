@@ -21,8 +21,8 @@ public class UserController {
     }
 
     @PostMapping("/signIn")
-    public void userSignIn(@RequestBody @Valid CredentialsCreateDTO request, @RequestParam Long userId){
+    public String userSignIn(@RequestBody @Valid CredentialsCreateDTO request, @RequestParam Long userId){
 
-        userService.signInUser(request, userId);
+        return userService.signInUser(request, userId);
     }
 }
