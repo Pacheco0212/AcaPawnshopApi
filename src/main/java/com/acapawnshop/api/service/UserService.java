@@ -86,6 +86,16 @@ public class UserService {
         return generateToken(userDetails);
     }
 
+    public String logInUser(CredentialsCreateDTO request) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPsswd()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        final  UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUserName());
+
+        return generateToken(userDetails);
+    }
+
     private String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()
@@ -93,7 +103,7 @@ public class UserService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //horas
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(Keys.hmacShaKeyFor(secretKey.getBytes()))
                 .compact();
     }
 }
