@@ -12,7 +12,5 @@ public record AdminDTO(
         String maternalSurname,
         @NotBlank
         @Email
-        String email,
-        @NotBlank
-        String state) {
+        String email ) {
 }

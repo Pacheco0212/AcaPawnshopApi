@@ -10,5 +10,4 @@ public class AdminCreateDTO {
     private String paternalSurname;
     private String maternalSurname;
     private String email;
-    private String state;
 }
