@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 
 public class AdminCredentialsCreateDTO {
-    private String admin_name;
+    private String adminName;
     private String psswd;
 
 }

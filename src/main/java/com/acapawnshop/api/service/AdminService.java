@@ -59,7 +59,7 @@ public class AdminService {
         Admin admin = adminRepository.findByAdminId(adminId).orElseThrow(() -> new RuntimeException("Admin not found"));
 
         AdminCredentials adminCredentials = new AdminCredentials();
-        adminCredentials.setAdminName(request.getAdmin_name());
+        adminCredentials.setAdminName(request.getAdminName());
         String encodedPassword = passwordEncoder.encode(request.getPsswd());
         adminCredentials.setPsswd(encodedPassword);
         adminCredentials.setAdmin(admin);
@@ -69,11 +69,11 @@ public class AdminService {
 
         //Admin Authentication
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getAdmin_name(), request.getPsswd()));
+                new UsernamePasswordAuthenticationToken(request.getAdminName(), request.getPsswd()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         //Load admin details
-        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdmin_name());
+        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdminName());
 
          //Create and return token jwt
           return generateToken(userDetails);
@@ -84,10 +84,10 @@ public class AdminService {
 
     public String logInAdmin(AdminCredentialsCreateDTO request){
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getAdmin_name(),request.getPsswd()));
+                new UsernamePasswordAuthenticationToken(request.getAdminName(),request.getPsswd()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdmin_name());
+        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdminName());
         return generateToken(userDetails);
     }
 
