@@ -1,5 +1,4 @@
 package com.acapawnshop.api.service;
-
 import com.acapawnshop.api.dto.user.CredentialsCreateDTO;
 import com.acapawnshop.api.dto.user.UserCreateDTO;
 import com.acapawnshop.api.entity.Address;
@@ -21,7 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
