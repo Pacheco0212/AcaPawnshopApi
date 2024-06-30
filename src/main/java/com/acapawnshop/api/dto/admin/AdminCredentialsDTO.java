@@ -3,7 +3,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public record AdminCredentialsDTO(
         @NotBlank
-        String admin_name,
+        String adminName,
         @NotBlank
         String psswd) {
 }

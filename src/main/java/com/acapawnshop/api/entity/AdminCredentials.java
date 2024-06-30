@@ -1,4 +1,5 @@
 package com.acapawnshop.api.entity;
+
 import com.acapawnshop.api.dto.admin.AdminCredentialsDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-
 public class AdminCredentials {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class AdminCredentials {
     private Admin admin;
 
     public AdminCredentials(AdminCredentialsDTO adminCredentialsDTO){
-        this.adminName = adminCredentialsDTO.admin_name();
+        this.adminName = adminCredentialsDTO.adminName();
         this.psswd = adminCredentialsDTO.psswd();
     }
 
