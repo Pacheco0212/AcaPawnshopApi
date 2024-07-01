@@ -40,7 +40,7 @@ public class AdminService {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private MyAdminDetailsService adminDetailsService;
+    private MyUserDetailsService userDetailsService;
 
 
     private final String secretKey = "2bd3c48b-eed0-4c14-84d0-3dc5c9d902c5";
@@ -73,7 +73,7 @@ public class AdminService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         //Load admin details
-        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdminName());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getAdminName());
 
          //Create and return token jwt
           return generateToken(userDetails);
@@ -87,7 +87,7 @@ public class AdminService {
                 new UsernamePasswordAuthenticationToken(request.getAdminName(),request.getPsswd()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        final UserDetails userDetails = adminDetailsService.loadUserByUsername(request.getAdminName());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getAdminName());
         return generateToken(userDetails);
     }
 
