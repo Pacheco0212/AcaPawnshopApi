@@ -7,6 +7,7 @@ import com.acapawnshop.api.entity.Admin;
 import com.acapawnshop.api.entity.AdminCredentials;
 
 
+import com.acapawnshop.api.jwt.TokenGenerator;
 import com.acapawnshop.api.repository.AdminRepository;
 import com.acapawnshop.api.repository.AdminCredentialsRepository;
 
@@ -41,6 +42,8 @@ public class AdminService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private MyUserDetailsService userDetailsService;
+    @Autowired
+    private TokenGenerator tokenGenerator;
 
 
     private final String secretKey = "2bd3c48b-eed0-4c14-84d0-3dc5c9d902c5";
@@ -76,7 +79,7 @@ public class AdminService {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getAdminName());
 
          //Create and return token jwt
-          return generateToken(userDetails);
+          return tokenGenerator.generateToken(userDetails);
     }
 
 
@@ -88,20 +91,7 @@ public class AdminService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getAdminName());
-        return generateToken(userDetails);
+        return tokenGenerator.generateToken(userDetails);
     }
-
-    private String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return Jwts.builder()
-                .setClaims(claims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) //horas
-                .signWith(Keys.hmacShaKeyFor(secretKey.getBytes()))
-                .compact();
-    }
-
-
 
 }

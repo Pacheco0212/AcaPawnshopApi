@@ -31,10 +31,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/usr/register",
-                                "/usr/signIn",
-                                "/usr/logIn",
                                 "/admin/register",
-                                "/admin/signIn"
+                                "/auth/signIn",
+                                "/auth/logIn"
                         ).permitAll()
                 )
                 .sessionManagement(session -> session
