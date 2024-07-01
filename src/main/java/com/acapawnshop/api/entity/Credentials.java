@@ -1,6 +1,6 @@
 package com.acapawnshop.api.entity;
 
-import com.acapawnshop.api.dto.user.CredentialsDTO;
+import com.acapawnshop.api.dto.user.UserCredentialsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,8 +23,8 @@ public class Credentials {
     @JoinColumn(name = "user_Id")
     private User user;
 
-    public Credentials(CredentialsDTO credentialsDTO){
-        this.userName = credentialsDTO.userName();
-        this.psswd = credentialsDTO.psswd();
+    public Credentials(UserCredentialsDTO userCredentialsDTO){
+        this.userName = userCredentialsDTO.userName();
+        this.psswd = userCredentialsDTO.psswd();
     }
 }

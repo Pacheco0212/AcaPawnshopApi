@@ -2,7 +2,7 @@ package com.acapawnshop.api.dto.user;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record CredentialsDTO(
+public record UserCredentialsDTO(
 
         @NotBlank(message = "User name cannot be blank")
         String userName,
