@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "https://acapawnshop.vercel.app")
 @RequestMapping("/usr")
 public class UserController {
 
